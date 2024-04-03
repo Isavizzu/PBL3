@@ -1,43 +1,18 @@
-public class Motorista {
-    private String nome;
-    private int idade;
-    private String cpf;
-    private String telefone;
+public class Motorista extends Usuario{
+    private String cnh;
     private String numeroDaContaBancaria;
     private String tipoDeHabilitacao;
 
-    Motorista(){
-        this("Isabelle", 18, "12345123122", "999999999", "1234", "A-B-C");
-    }
-    
-    Motorista(String nome, int idade, String cpf, String telefone, String numeroDaContaBancaria, String tipoDeHabilitacao){
-        this.nome = nome;
-        this.cpf = cpf;
+    public Motorista (String nome, char genero, String datadenascimento, String cpf, String cnh, numeroDaContaBancaria, tipoDeHabilitacao){
+        super(nome,genero,datadenascimento,cpf);
+        this.cnh = cnh;
         this.numeroDaContaBancaria = numeroDaContaBancaria;
-        this.telefone = telefone;
         this.tipoDeHabilitacao = tipoDeHabilitacao;
-        this.idade = idade;
-    }
-    
-    public String getNome(){
-        return this.nome;
     }
 
-    public int getIdade(){
-        return this.idade;
-    }
-
-    public String getCpf(){
-        return this.cpf;
-    }
-
-    public String getTelefone(){
-        return this.telefone;
-    }
-
-    public void telefone(String telefone){
-        this.telefone = telefone;
-    }
+    public String getCnh(){
+        return this.cnh;
+}
 
     public String getNumeroDaContaBancaria(){
         return this.numeroDaContaBancaria;
