@@ -23,10 +23,10 @@ public class main {
             //Pedindo a opção desejada com scanner
             System.out.print("Digite a opção desejada: ");
             Scanner scanner = new Scanner(System.in);
-            int opcao = scanner.nextInt();
+            resp = scanner.nextInt();
 
             //Verifica a opção escolhida
-            switch(opcao){
+            switch(resp){
                 case 1:
                     cadastroPassageiro(passageiros);
                     break;
@@ -34,15 +34,20 @@ public class main {
                     cadastroMotorista(motoristas);
                     break;
                 case 3:
-                    listarPassageiro(passageiros);
+
                     break;
                 case 4:
                     break;
                 case 5:
+                    listarMotorista(motoristas);
                     break;
                 case 6:
+                    listarPassageiro(passageiros);
                     break;
                 case 7:
+                    imprimir();
+                    System.out.println("Obrigada por usar o Uber!");
+                    imprimir();
                     break;
                 default:
                     break;
@@ -55,6 +60,26 @@ public class main {
 
     public static void imprimir(){
         System.out.println("--------------------------");
+    }
+
+    public static void listarPassageiro(ArrayList<Passageiro> passageiros){
+        imprimir();
+        int i = 0;
+        for(Passageiro passageiro:passageiros){
+            i++;
+            String nome = passageiro.getNome();
+            System.out.println(i + "- " + nome);
+        }
+    }
+
+    public static void listarMotorista(ArrayList<Motorista> motoristas){
+        imprimir();
+        int i = 0;
+        for(Motorista motorista:motoristas){
+            i++;
+            String nome = motorista.getNome();
+            System.out.println(i + "- " + nome);
+        }
     }
     public static void cadastroPassageiro(ArrayList<Passageiro> passageiros){
         //Solicitando dados
