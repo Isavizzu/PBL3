@@ -3,7 +3,7 @@ public class Motorista extends Usuario{
     private String numeroDaContaBancaria;
     private String tipoDeHabilitacao;
 
-    public Motorista (String nome, char genero, String datadenascimento, String cpf, String cnh, numeroDaContaBancaria, tipoDeHabilitacao){
+    public Motorista (String nome, String genero, String datadenascimento, String cpf, String cnh, String numeroDaContaBancaria, String tipoDeHabilitacao){
         super(nome,genero,datadenascimento,cpf);
         this.cnh = cnh;
         this.numeroDaContaBancaria = numeroDaContaBancaria;
