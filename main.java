@@ -5,6 +5,7 @@ public class main {
         int resp = 0;
         ArrayList<Passageiro> passageiros = new ArrayList<Passageiro>();
         ArrayList<Motorista> motoristas = new ArrayList<Motorista>();
+        ArrayList<Endereco> enderecos = new ArrayList<Endereco>();
         imprimir();
         System.out.println("  Seja Bem-Vindo ao Uber  ");
         while (resp != 7){
@@ -34,9 +35,10 @@ public class main {
                     cadastroMotorista(motoristas);
                     break;
                 case 3:
-
+                    cadastroEndereco(enderecos);
                     break;
                 case 4:
+                    associarEndereco(passageiros, enderecos);
                     break;
                 case 5:
                     listarMotorista(motoristas);
@@ -127,6 +129,63 @@ public class main {
         String conta = scanner.nextLine();
         System.out.print("\nDigite o tipo de Habilitação do Motorista (tipo: A, B, C, D ou E): ");
         String tipo = scanner.nextLine();
+
+    public static void cadastroEndereco(ArrayList<Endereco> Enderecos){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("\n");
+        imprimir();
+        Sytem.out.println("Cadastro do Endereço");
+        imprimir();
+        System.out.print("Digite o nome do país: ");
+        String pais = scanner.nextLine();
+        System.out.print("\nDigite o nome do Estado: ");
+        String estado = scanner.nextLine();
+        System.out.print("\nDigite o nome da cidade: ");
+        String cidade = scanner.nextLine();
+        System.out.print("\nDigite o nome do bairro: ");
+        String bairro = scanner.nextLine();
+        System.out.print("\nDigite o nome da rua: ");
+        String rua = scanner.nextLine();
+        System.out.print("\nDigite o número do endereço: ");
+        int numero = scanner.nextLine();
+
+        Endereco endereco = new Endereco(pais, estado, cidade, bairro, rua, numero);
+        enderecos.add(endereco);
+        System.out.println("Endereço cadastrado com sucesso!");
+
+    }
+
+    public static void associarEndereco(ArrayList<Passageiro> passageiros, ArrayList<Endereco> enderecos) {
+        // Listar passageiros disponíveis para associação
+        System.out.println("Passageiros disponíveis:");
+        for (int i = 0; i < passageiros.size(); i++) {
+            System.out.println((i + 1) + ". " + passageiros.get(i).getNome());
+        }
+
+        // Solicitar o passageiro para associar o endereço
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Escolha o número do passageiro: ");
+        int escolhaPassageiro = scanner.nextInt();
+        
+        Passageiro passageiroEscolhido = passageiros.get(escolhaPassageiro - 1);
+        
+        // Listar endereços disponíveis para associação
+        System.out.println("Endereços disponíveis:");
+        for (int i = 0; i < enderecos.size(); i++) {
+            System.out.println((i + 1) + ". " + enderecos.get(i).getPais()); // Supondo que o endereço tenha um método getPais()
+        }
+
+        // Solicitar o endereço para associação
+        System.out.print("Escolha o número do endereço: ");
+        int escolhaEndereco = scanner.nextInt();
+        
+        Endereco enderecoEscolhido = enderecos.get(escolhaEndereco - 1);
+        
+        // Associar o endereço ao passageiro
+        passageiroEscolhido.adicionarEndereco(enderecoEscolhido);
+        
+        System.out.println("Endereço associado ao passageiro com sucesso!");
+    }
 
         //Criando Motorista
         motoristas.add(new Motorista(nome, genero, data, cpf, cnh, conta, tipo));
